@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Form with Validation</title>
+</head>
+<body>
+    <h1>Submit Your Details</h1>
+
+    <!-- Display validation errors -->
+    <% if (errors && errors.length > 0) { %>
+        <ul style="color: red;">
+            <% errors.forEach(error => { %>
+                <li><%= error.msg %></li>
+            <% }) %>
+        </ul>
+    <% } %>
+    
+
+    <!-- Form -->
+    <form action="/api/submit" method="POST">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" value="<%= formData ? formData.username : '' %>">
+        <br><br>
+
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" value="<%= formData ? formData.email : '' %>" required>
+        <br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+</body>
+</html>
